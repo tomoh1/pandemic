@@ -24,7 +24,7 @@ class CityGraph():
         self.name_dict = {}
         self.graph = nx.Graph()
         for name, population, color, x, y in city_list:
-            disease = diseases.colormap[color]
+            disease = diseases.COLORMAP[color]
             city = City(name, population, disease, x, y)
             self.name_dict[name] = city
             self.graph.add_node(city)
@@ -43,7 +43,7 @@ class CityGraph():
         if self.graph.has_edge(city1, city2):
             raise RuntimeError('There is already a connection between %s and '
                                '%s' % (city1, city2))
-        self.graph.add_edge(city1, city2, attr_dict)
+        self.graph.add_edge(city1, city2)
 
     def getCity(self, city):
         """

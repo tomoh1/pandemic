@@ -27,3 +27,19 @@ class Disease(object):
             if self.cubes_available == NUM_CUBES:
                 self.status = ERADICATED
 
+BLUE_COLOR = 'blue'
+RED_COLOR = 'red'
+YELLOW_COLOR = 'yellow'
+BLACK_COLOR = 'black'
+
+BLUE = Disease(BLUE)
+RED = Disease(RED)
+YELLOW = Disease(YELLOW_COLOR)
+BLACK = Disease(BLACK_COLOR)
+
+
+COLORMAP = {BLUE_COLOR: BLUE,
+            RED_COLOR: RED,
+            YELLOW_COLOR: YELLOW,
+            BLACK_COLOR: BLACK}
+
