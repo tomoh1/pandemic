@@ -3,10 +3,11 @@ from models import diseases
 
 
 class City(object):
-    def __init__(self, name, population, disease):
+    def __init__(self, name, population, disease, x, y):
         self.name = name
         self.population = population
         self.native_disease = disease
         self.research_station = False
         self.cubes = {}
         self.protected = False
+        self.city_pos = (x, y)
