@@ -26,12 +26,11 @@ class CityGraph():
         for name, population, color, x, y in city_list:
             disease = diseases.COLORMAP[color]
             city = City(name, population, disease, x, y)
-            self.name_dict[name] = city
-            self.graph.add_node(city)
+            self.addCity(city)
 
         for name1, name2 in connection_list:
-            city1 = self.findCity(name1)
-            city2 = self.findCity(name2)
+            city1 = self.getCity(name1)
+            city2 = self.getCity(name2)
             self.addConnection(city1, city2)
 
     def addCity(self, city):
@@ -63,6 +62,7 @@ class CityGraph():
                 return city
             else:
                 raise RuntimeError('City object %s is not in the graph.' % city)
+        name = city
         city = self.name_dict.get(name)
         if city is None:
             raise RuntimeError('No city named %s.' % name)

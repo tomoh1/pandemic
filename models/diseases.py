@@ -27,13 +27,16 @@ class Disease(object):
             if self.cubes_available == NUM_CUBES:
                 self.status = ERADICATED
 
+    def __repr__(self):
+        return '<Disease %s>' % self.color
+
 BLUE_COLOR = 'blue'
 RED_COLOR = 'red'
 YELLOW_COLOR = 'yellow'
 BLACK_COLOR = 'black'
 
-BLUE = Disease(BLUE)
-RED = Disease(RED)
+BLUE = Disease(BLUE_COLOR)
+RED = Disease(RED_COLOR)
 YELLOW = Disease(YELLOW_COLOR)
 BLACK = Disease(BLACK_COLOR)
 
