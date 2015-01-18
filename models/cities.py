@@ -10,7 +10,7 @@ class City(object):
         self.research_station = False
         self.cubes = {}
         self.protected = False
-        self.city_pos = (x, y)
+        self.pos = (x, y)
 
     def __str__(self):
         return self.name
@@ -19,7 +19,7 @@ class City(object):
         return '<City> %s' % self.name
 
 
-class CityGraph():
+class CityGraph(object):
     def __init__(self, city_list, connection_list):
         self.name_dict = {}
         self.graph = nx.Graph()
@@ -62,7 +62,7 @@ class CityGraph():
                 return city
             else:
                 raise RuntimeError('City object %s is not in the graph.' % city)
-        name = city
+        name = str(city)
         city = self.name_dict.get(name)
         if city is None:
             raise RuntimeError('No city named %s.' % name)
@@ -71,6 +71,9 @@ class CityGraph():
     def getNeighbors(self, city):
         city = self.getCity(city)
         return self.graph.neighbors(city)
+
+    def cities(self):
+        return self.graph.nodes()
 
 
 
