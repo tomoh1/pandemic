@@ -45,12 +45,14 @@ class Board(BSuper):
         self.main_layout.addWidget(self.view)
         g = cities.CityGraph(city_data.CITY_LIST, city_data.CONNECTION_LIST)
         self.city_graph = g
+        self.spot_list = []
 
     def highlightCity(self, city, spot=None):
         city = self.city_graph.getCity(city)
         self.scene.highlightPos(*city.pos, spot=spot)
 
     def highlightAll(self):
+        self.clearHighlights()
         self.spot_list = []
         for city in self.city_graph.cities():
             s = self.scene.newHighlight()
@@ -61,6 +63,6 @@ class Board(BSuper):
         for spot in self.spot_list:
             self.scene.removeItem(spot)
         self.spot_list = []
-        scene.highlight_spot.setVisible(False)
+        self.scene.highlight_spot.setVisible(False)
 
 
