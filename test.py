@@ -53,6 +53,20 @@ def directFlight(player, city):
     else:
         print 'City card not in hand'
 
+def charterFlight(player, city):
+    card = player.charterFlight(city)
+    if card is not None:
+        player_discard_pile.addCardToTop(card)
+    else:
+        print 'City card for current city not in hand'
+
+def buildStation(player):
+    card = player.buildStation()
+    if card is not None:
+        player_discard_pile.addCardToTop(card)
+    else:
+        print 'Already a research station or No Current City Card'
+
 g = cities.CityGraph(city_data.CITY_LIST, city_data.CONNECTION_LIST)
 player_deck = cards.CardDeck()
 player_discard_pile = cards.CardDeck()
@@ -103,4 +117,5 @@ p2 = player_list[1]
 
 p1.current_city = g.getCity('Atlanta')
 p2.current_city = g.getCity('Atlanta')
+
 

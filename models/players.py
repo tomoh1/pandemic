@@ -15,7 +15,30 @@ class Player(object):
         if city.name in self.hand:
             index = self.hand.index(city.name)
             card = self.hand.pop(index)
-            self.current_city = city
+            self.setCity(city)
             return card
-        else:
-            return None
+
+    def charterFlight(self, city):
+        current_city = self.current_city.name
+        if current_city in self.hand:
+            index = self.hand.index(current_city)
+            card = self.hand.pop(index)
+            self.setCity(city)
+            return card
+
+    def shuttleFlight(self, city):
+        if city.research_station and self.current_city.research_station:
+            self.setCity(city)
+
+    def buildStation(self):
+        current_city = self.current_city.name
+        if (not self.current_city.research_station
+            and self.current_city.name in self.hand):
+            self.current_city.research_station = True
+            index = self.hand.index(current_city)
+            card = self.hand.pop(index)
+            return card
+    
+    def setCity(self, city):
+        self.current_city = city
+        
