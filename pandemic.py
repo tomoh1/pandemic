@@ -26,7 +26,8 @@ class MainWidget(MWSuper):
             try:
                 self.board.highlightCity(text)
             except RuntimeError:
-                pass
+                return
+        self.city_le.setText('')
 
 def main():
     app = QtGui.QApplication([])
