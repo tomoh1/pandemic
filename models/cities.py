@@ -1,14 +1,14 @@
 import networkx as nx
 from models import diseases
 
-
 class City(object):
     def __init__(self, name, population, disease, x, y):
         self.name = name
         self.population = population
         self.native_disease = disease
         self.research_station = False
-        self.cubes = {}
+        self.cubes = {diseases.BLUE: 0, diseases.RED: 0,
+                      diseases.YELLOW:0, diseases.BLACK: 0}
         self.protected = False
         self.pos = (x, y)
 
@@ -18,6 +18,9 @@ class City(object):
     def __repr__(self):
         return '<City> %s' % self.name
 
+    def infect(self, disease, num_cubes):
+        disease.deployCubes(num_cubes)
+        self.cubes[disease] += num_cubes
 
 class CityGraph(object):
     def __init__(self, city_list, connection_list):
