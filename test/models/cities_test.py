@@ -12,6 +12,9 @@ from mock import MagicMock, patch, Mock
 # Modules under test
 from models import cities
 
+class TestCity(unittest.TestCase):
+    def test_null(self):
+        self.assertTrue(True)
 
 
 if __name__ == '__main__':
