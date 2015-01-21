@@ -1,6 +1,6 @@
-ACTIVE = 0
-CURED = 1
-ERADICATED = 2
+ACTIVE = 'active'
+CURED = 'cured'
+ERADICATED = 'eradicated'
 
 NUM_CUBES = 24
 

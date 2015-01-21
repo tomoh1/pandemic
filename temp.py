@@ -78,13 +78,13 @@ def discoverCure(player, disease, cards):
         if g.getCity(card).native_disease != disease:
             print '{} card is not the right color'.format(card)
             return
-    cure_cards = player.discoverCure(cards)
+    cure_cards = player.discoverCure(disease, cards)
     if cure_cards is None:
         print 'Not all cards are in your hand'
         return
     for card in cure_cards:
         player_discard_pile.addCardToTop(card)
-    print 'Disease cured!'      
+    print 'Disease cured!'
 
 g = cities.CityGraph(city_data.CITY_LIST, city_data.CONNECTION_LIST)
 player_deck = cards.CardDeck()
