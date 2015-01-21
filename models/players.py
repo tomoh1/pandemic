@@ -1,5 +1,5 @@
-
-
+from models import cities
+from models import diseases
 
 class Player(object):
     def __init__(self, name):
@@ -41,4 +41,13 @@ class Player(object):
     
     def setCity(self, city):
         self.current_city = city
+        
+    def discoverCure(self, disease, cards):
+        for card in cards:
+            if card not in self.hand:
+                return
+        for card in cards:
+            self.hand.remove(card)
+        disease.cure()
+        return cards
         

@@ -66,6 +66,25 @@ def buildStation(player):
         player_discard_pile.addCardToTop(card)
     else:
         print 'Already a research station or No Current City Card'
+        
+def discoverCure(player, disease, cards):
+    if not player.current_city.research_station:
+        print 'Not at research station'
+        return
+    if len(cards) != 5:
+        print 'Did not select 5 cards'
+        return
+    for card in cards:
+        if g.getCity(card).native_disease != disease:
+            print '{} card is not the right color'.format(card)
+            return
+    cure_cards = player.discoverCure(cards)
+    if cure_cards is None:
+        print 'Not all cards are in your hand'
+        return
+    for card in cure_cards:
+        player_discard_pile.addCardToTop(card)
+    print 'Disease cured!'      
 
 g = cities.CityGraph(city_data.CITY_LIST, city_data.CONNECTION_LIST)
 player_deck = cards.CardDeck()
