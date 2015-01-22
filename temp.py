@@ -86,6 +86,20 @@ def discoverCure(player, disease, cards):
         player_discard_pile.addCardToTop(card)
     print 'Disease cured!'
 
+def shareKnowledge(recipient, donor, card):
+    if recipient.current_city != donor.current_city:
+        print 'Two players are not in the same city'
+        return
+    if card != recipient.current_city.name:
+        print 'The card you want to share does not match the city you are in'
+        return
+    if card not in donor.hand:
+        print "The card you want to trade is not in the giver's hand"
+        return
+    donor.giveKnowledge(card)
+    recipient.takeKnowledge(card)
+    print 'Card traded!'
+
 g = cities.CityGraph(city_data.CITY_LIST, city_data.CONNECTION_LIST)
 player_deck = cards.CardDeck()
 player_discard_pile = cards.CardDeck()

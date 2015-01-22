@@ -38,10 +38,10 @@ class Player(object):
             index = self.hand.index(current_city)
             card = self.hand.pop(index)
             return card
-    
+
     def setCity(self, city):
         self.current_city = city
-        
+
     def discoverCure(self, disease, cards):
         for card in cards:
             if card not in self.hand:
@@ -50,4 +50,9 @@ class Player(object):
             self.hand.remove(card)
         disease.cure()
         return cards
-        
+
+    def giveKnowledge(self, card):
+        self.hand.remove(card)
+
+    def takeKnowledge(self, card):
+        self.hand.append(card)
