@@ -100,6 +100,14 @@ def shareKnowledge(recipient, donor, card):
     recipient.takeKnowledge(card)
     print 'Card traded!'
 
+def driveToCity(player, destination):
+    neighbors = g.getNeighbors(player.current_city)
+    if destination not in neighbors:
+        print 'Cannot drive or ferry to that city'
+        return
+    player.current_city = destination
+    print 'You are now in %s.' % destination
+
 g = cities.CityGraph(city_data.CITY_LIST, city_data.CONNECTION_LIST)
 player_deck = cards.CardDeck()
 player_discard_pile = cards.CardDeck()
@@ -150,5 +158,3 @@ p2 = player_list[1]
 
 p1.current_city = g.getCity('Atlanta')
 p2.current_city = g.getCity('Atlanta')
-
-
