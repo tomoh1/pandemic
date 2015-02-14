@@ -20,8 +20,8 @@ class BoardScene(BSSuper):
 
     def newHighlight(self):
         r = self.spot_radius
-        pen = QtGui.QPen(QtCore.Qt.white)
-        brush = QtGui.QBrush(QtCore.Qt.white)
+        pen = QtGui.QPen(QtCore.Qt.red)
+        brush = QtGui.QBrush(QtCore.Qt.red)
         s = self.addEllipse(0, 0, 2*r, 2*r, pen, brush)
         s.setVisible(False)
         return s
@@ -35,16 +35,15 @@ class BoardScene(BSSuper):
 
 BSuper = QtGui.QWidget
 class Board(BSuper):
-    def __init__(self, *args, **kwargs):
-        BSuper.__init__(self, *args, **kwargs)
+    def __init__(self, graph):
+        BSuper.__init__(self)
         self.main_layout = QtGui.QHBoxLayout()
         self.setLayout(self.main_layout)
         self.view = BoardView()
         self.scene = BoardScene()
         self.view.setScene(self.scene)
         self.main_layout.addWidget(self.view)
-        g = cities.CityGraph(city_data.CITY_LIST, city_data.CONNECTION_LIST)
-        self.city_graph = g
+        self.city_graph = graph
         self.spot_list = []
 
     def highlightCity(self, city, spot=None):

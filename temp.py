@@ -108,7 +108,7 @@ def driveToCity(player, destination):
     player.current_city = destination
     print 'You are now in %s.' % destination
 
-g = cities.CityGraph(city_data.CITY_LIST, city_data.CONNECTION_LIST)
+# g = cities.CityGraph(city_data.CITY_LIST, city_data.CONNECTION_LIST)
 player_deck = cards.CardDeck()
 player_discard_pile = cards.CardDeck()
 infection_deck = cards.CardDeck()
